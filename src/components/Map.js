@@ -21,6 +21,7 @@ const Map = () => {
             { code: "2a", color: "violet" },
             { code: 976, color: "salmon" },
           ]}
+          dptSelected={dptSelected}
           setDptSelected={setDptSelected}
         />
       </div>

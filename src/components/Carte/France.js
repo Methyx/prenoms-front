@@ -14,12 +14,13 @@ const France = ({
   defaultColor,
   departements,
   highlightColor,
+  dptSelected,
   setDptSelected,
 }) => {
+  // init
   // Use States
   const [dptColor, setDptColor] = useState({});
   const [isReady, setIsReady] = useState(false);
-  const [oldSelected, setOldSelected] = useState(null);
 
   //
   useEffect(() => {
@@ -30,9 +31,12 @@ const France = ({
     for (let i = 0; i < departements.length; i++) {
       tabColor[normalizeDpt(departements[i].code)] = departements[i].color;
     }
+    if (dptSelected) {
+      tabColor[dptSelected.slice(4)] = highlightColor;
+    }
     setDptColor({ ...tabColor });
     setIsReady(true);
-  }, []);
+  }, [defaultColor, highlightColor, departements, dptSelected]);
 
   //
   return (
@@ -45,24 +49,15 @@ const France = ({
           e.target.id !== "dpt-75-92-93-94"
         ) {
           let unselect = false;
-          const colors = { ...dptColor };
-          if (oldSelected) {
-            colors[oldSelected.id.slice(4)] = oldSelected.color;
-            if (oldSelected.id === e.target.id) {
-              setOldSelected(null);
+          if (dptSelected) {
+            if (dptSelected === e.target.id) {
               setDptSelected(null);
               unselect = true;
             }
           }
           if (!unselect) {
-            setOldSelected({
-              id: e.target.id,
-              color: e.target.attributes.fill.nodeValue,
-            });
             setDptSelected(e.target.id);
-            colors[e.target.id.slice(4)] = highlightColor;
           }
-          setDptColor(colors);
         }
       }}
     >
