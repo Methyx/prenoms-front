@@ -7,7 +7,6 @@
 
 polygon:hover,
 path:hover {
-  /* fill: rgb(80, 80, 80); */
   stroke-width: 5px;
 }
 #sous-cadre_Île-de-France,
