@@ -1,0 +1,17 @@
+.map-container {
+  width: 400px;
+  height: 400px;
+  padding: 0 5px;
+  border: 1px solid black;
+}
+
+polygon:hover,
+path:hover {
+  /* fill: rgb(80, 80, 80); */
+  stroke-width: 5px;
+}
+#sous-cadre_Île-de-France,
+#dpt-75-92-93-94 {
+  fill: none;
+  stroke-width: 1px;
+}
