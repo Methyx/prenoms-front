@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { SvgLoader, SvgProxy } from "react-svgmt";
 import { useEffect, useState } from "react";
 
@@ -8,6 +7,7 @@ import listOfDepartements from "../../assets/listOfDepartements";
 
 import Carte from "./Carte";
 
+// style
 import "../../style/france.css";
 
 const France = ({
@@ -17,10 +17,8 @@ const France = ({
   dptSelected,
   setDptSelected,
 }) => {
-  // init
   // Use States
   const [dptColor, setDptColor] = useState({});
-  const [isReady, setIsReady] = useState(false);
 
   //
   useEffect(() => {
@@ -35,7 +33,6 @@ const France = ({
       tabColor[dptSelected.slice(4)] = highlightColor;
     }
     setDptColor({ ...tabColor });
-    setIsReady(true);
   }, [defaultColor, highlightColor, departements, dptSelected]);
 
   //
@@ -61,30 +58,25 @@ const France = ({
         }
       }}
     >
-      {isReady &&
-        listOfDepartements.map((dpt) => {
-          return (
-            <SvgProxy
-              key={`default_${dpt}`}
-              selector={`#dpt-${normalizeDpt(dpt)}`}
-              fill={dptColor[normalizeDpt(dpt)]}
-            />
-          );
-        })}
+      {listOfDepartements.map((dpt) => {
+        return (
+          <SvgProxy
+            key={`default_${dpt}`}
+            selector={`#dpt-${normalizeDpt(dpt)}`}
+            fill={dptColor[normalizeDpt(dpt)]}
+          />
+        );
+      })}
     </SvgLoader>
   );
-};
-
-France.propTypes = {
-  defaultColor: PropTypes.string,
-  departements: PropTypes.array,
-  highlightColor: PropTypes.string,
 };
 
 France.defaultProps = {
   defaultColor: "#c1c1c1",
   departements: [],
   highlightColor: "#b3ff75",
+  dptSelected: null,
+  setDptSelected: () => {},
 };
 
 export default France;
