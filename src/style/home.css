@@ -1,0 +1,15 @@
+.home-page {
+  height: 100vh;
+}
+
+.home-page .selections {
+  display: flex;
+  width: 100%;
+  padding: 20px 0;
+  gap: 20px;
+}
+.home-page .selections p {
+  font-size: 12px;
+  color: var(--orange);
+  font-style: italic;
+}

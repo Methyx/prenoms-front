@@ -6,10 +6,10 @@
 }
 
 .top-names .map-container {
-  width: max(500px, 50%);
+  width: min(500px, 50%);
   height: 100%;
   padding: 0 5px;
-  border: 1px solid black;
+  border: 1px solid var(--bleu);
 }
 
 .top-names .results-container {
@@ -17,9 +17,59 @@
   height: 100%;
   width: max(calc(100% - 500px), 50%);
 }
+.top-names .results-container h1 {
+  text-align: center;
+  margin: 5px 0;
+  font-size: 28px;
+  color: var(--bleu);
+}
+.top-names .results-container h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--orange);
+  margin: 5px 0;
+}
+.top-names .results-container h6 {
+  text-align: center;
+  font-style: italic;
+}
+
 .top-names .chart {
-  margin: 10px;
-  border: 1px solid gray;
+  margin: 15px;
+  border: 3px solid var(--bleu);
   height: 50%;
+  width: calc(100% - 30px);
   overflow-y: scroll;
+  /* background-color: var(--bleu); */
+  color: var(--bleu);
+}
+.top-names .chart table {
+  width: 100%;
+}
+.top-names .chart tr th {
+  line-height: 40px;
+  font-weight: bold;
+}
+.top-names .chart tr th:nth-child(2) {
+  text-align: left;
+}
+.top-names .chart tr td {
+  line-height: 21px;
+}
+.top-names .chart tr td:nth-child(1) {
+  width: 15%;
+  text-align: center;
+}
+.top-names .chart tr td:nth-child(2) {
+  text-align: left;
+}
+.top-names .chart tr td:nth-child(3) {
+  width: 20%;
+  text-align: center;
+}
+.top-names .chart tbody tr:nth-child(2n + 1) {
+  /* color: var(--jaune); */
+  background-color: var(--bleu);
+  color: var(--beige);
 }

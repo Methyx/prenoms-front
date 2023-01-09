@@ -1,3 +1,9 @@
+:root {
+  --bleu: #1e3d59;
+  --beige: #f5f0e1;
+  --orange: #ff6e40;
+  --jaune: #ffc13b;
+}
 #root {
   font-family: "Poppins", sans-serif;
 }
@@ -5,4 +11,5 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
+  background-color: var(--beige);
 }
