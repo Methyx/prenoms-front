@@ -1,11 +1,11 @@
 // components
-import MapTopNameOfYears from "../components/MapTopNameOfYears";
+import TopNames from "../components/TopNames";
 
 const Home = () => {
   return (
-    <div>
+    <div className="container">
       <h1>HOME PAGE</h1>
-      <MapTopNameOfYears years={2010} gender={"F"} />
+      <TopNames years={2010} gender={"F"} />
     </div>
   );
 };

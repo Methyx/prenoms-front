@@ -24,13 +24,18 @@ const France = ({
   useEffect(() => {
     const tabColor = {};
     for (let i = 0; i < listOfDepartements.length; i++) {
-      tabColor[normalizeDpt(listOfDepartements[i])] = defaultColor;
+      tabColor[normalizeDpt(listOfDepartements[i].num_dep)] = defaultColor;
     }
     for (let i = 0; i < departements.length; i++) {
       tabColor[normalizeDpt(departements[i].code)] = departements[i].color;
     }
     if (dptSelected) {
-      tabColor[dptSelected.slice(4)] = highlightColor;
+      if (dptSelected === "dpt-20") {
+        tabColor["2A"] = highlightColor;
+        tabColor["2B"] = highlightColor;
+      } else {
+        tabColor[dptSelected.slice(4)] = highlightColor;
+      }
     }
     setDptColor({ ...tabColor });
   }, [defaultColor, highlightColor, departements, dptSelected]);
@@ -47,13 +52,21 @@ const France = ({
         ) {
           let unselect = false;
           if (dptSelected) {
-            if (dptSelected === e.target.id) {
+            if (
+              dptSelected === e.target.id ||
+              (dptSelected === "dpt-20" &&
+                (e.target.id === "dpt-2A" || e.target.id === "dpt-2B"))
+            ) {
               setDptSelected(null);
               unselect = true;
             }
           }
           if (!unselect) {
-            setDptSelected(e.target.id);
+            if (e.target.id === "dpt-2A" || e.target.id === "dpt-2B") {
+              setDptSelected("dpt-20");
+            } else {
+              setDptSelected(e.target.id);
+            }
           }
         }
       }}
@@ -61,9 +74,9 @@ const France = ({
       {listOfDepartements.map((dpt) => {
         return (
           <SvgProxy
-            key={`default_${dpt}`}
-            selector={`#dpt-${normalizeDpt(dpt)}`}
-            fill={dptColor[normalizeDpt(dpt)]}
+            key={`default_${dpt.num_dep}`}
+            selector={`#dpt-${normalizeDpt(dpt.num_dep)}`}
+            fill={dptColor[normalizeDpt(dpt.num_dep)]}
           />
         );
       })}
