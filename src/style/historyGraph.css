@@ -1,0 +1,23 @@
+.history-graph {
+  margin: 15px 0;
+  display: flex;
+  width: 100%;
+  height: 500px;
+}
+
+.history-graph .map-container {
+  width: min(500px, 50%);
+  height: 100%;
+  padding: 0 5px;
+  border: 1px solid var(--bleu);
+}
+
+.history-graph .results-container {
+  margin: 20px;
+  height: 100%;
+  width: max(calc(100% - 500px), 50%);
+}
+.history-graph .graph-container {
+  width: 100%;
+  height: 100%;
+}

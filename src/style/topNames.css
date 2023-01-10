@@ -76,7 +76,6 @@
 }
 
 .top-names .search-name {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -89,4 +88,23 @@
   color: var(--orange);
   font-size: 12px;
   font-style: italic;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .top-names {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    height: 1000px;
+  }
+  .top-names .map-container {
+    height: 500px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .top-names .results-container {
+    height: 500px;
+    width: 90%;
+    margin: 20px auto;
+  }
 }

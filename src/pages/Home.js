@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -43,6 +44,7 @@ const Home = () => {
   return (
     <div className="container home-page">
       <div className="title">
+        <Link to="/history">Historique</Link>
         <h1>Les prénoms donnés en France entre 1900 et 2021</h1>
         <p>
           Source :{" "}
