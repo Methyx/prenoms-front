@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
 
 // components
 import France from "./Carte/France";
@@ -15,6 +16,8 @@ const TopNames = ({ years, gender }) => {
   const [isReady, setIsReady] = useState(false);
   const [dptSelected, setDptSelected] = useState(null);
   const [data, setData] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const memoElement = useRef(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -40,6 +43,8 @@ const TopNames = ({ years, gender }) => {
       }
     };
     loadData(years);
+    setSearchName("");
+    memoElement.current = null;
   }, [dptSelected, gender, years]);
 
   return (
@@ -54,7 +59,7 @@ const TopNames = ({ years, gender }) => {
       <div className="results-container">
         <h1>
           Classement des Prénoms {gender === "M" && "Masculins"}
-          {gender === "F" && "Féminins"} {" - "} {years}
+          {gender === "F" && "Féminins"} {" - "} {years || "all"}
         </h1>
         {dptSelected ? (
           <h2>
@@ -81,10 +86,10 @@ const TopNames = ({ years, gender }) => {
                 data[0]?._id ? (
                   data.map((item, index) => {
                     return (
-                      <tr key={index + 1}>
+                      <tr key={index + 1} id={item._id}>
                         <td>{index + 1}</td>
                         <td>{item._id} </td>
-                        <td>{item.total} </td>
+                        <td>{Number(item.total).toLocaleString()} </td>
                       </tr>
                     );
                   })
@@ -100,6 +105,44 @@ const TopNames = ({ years, gender }) => {
               )}
             </tbody>
           </table>
+        </div>
+        <div className="search-name">
+          <TextField
+            className="input-name"
+            sx={{
+              "& label.Mui-focused": {
+                color: "#ff6e40",
+              },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "#ff6e40",
+                },
+              },
+            }}
+            type="text"
+            label="Rechercher un prénom"
+            value={searchName}
+            onChange={(event) => {
+              setSearchName(event.target.value);
+              const elem = document.getElementById(
+                event.target.value.toUpperCase()
+              );
+              if (elem) {
+                elem.scrollIntoView();
+                memoElement.current = {
+                  element: elem,
+                  color: window.getComputedStyle(elem).color,
+                };
+                elem.style.color = "#ff6e40";
+              } else {
+                if (memoElement.current) {
+                  memoElement.current.element.style.color =
+                    memoElement.current.color;
+                  memoElement.current = null;
+                }
+              }
+            }}
+          />
         </div>
       </div>
     </div>
