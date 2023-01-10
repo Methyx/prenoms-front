@@ -44,7 +44,17 @@ const Home = () => {
     <div className="container home-page">
       <div className="title">
         <h1>Le site des prénoms donnés en France entre 1900 et 2021</h1>
-        <p>Source : fichier des prénoms de l'INSEE</p>
+        <p>
+          Source :{" "}
+          <a
+            href="https://www.insee.fr/fr/statistiques/3532172"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            fichier des prénoms de l'INSEE{" "}
+          </a>
+        </p>
       </div>
       <div className="selections">
         <div>

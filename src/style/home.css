@@ -3,7 +3,7 @@
 }
 
 .home-page .title {
-  border-bottom: 5px solid var(--jaune);
+  border-bottom: 1px solid var(--orange);
   padding: 20px 0;
   text-align: center;
 }
@@ -11,6 +11,11 @@
   font-size: 28px;
   color: var(--bleu);
   margin: 15px 0;
+}
+.home-page .title a {
+  color: var(--bleu);
+  text-decoration: none;
+  font-style: italic;
 }
 
 .home-page .selections {
