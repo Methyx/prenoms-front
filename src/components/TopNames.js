@@ -58,15 +58,19 @@ const TopNames = ({ years, gender }) => {
       </div>
       <div className="results-container">
         <h1>
-          Classement des Prénoms {gender === "M" && "Masculins"}
-          {gender === "F" && "Féminins"} {" - "} {years || "all"}
+          {gender === "M"
+            ? "Masculins"
+            : gender === "F"
+            ? "Féminins"
+            : "Sexe indifférent"}
+          {" : "} {years || "all"}
         </h1>
         {dptSelected ? (
           <h2>
             {getNameOfDpt(dptSelected.slice(4))}
             {" ("}
             {dptSelected.slice(4)}
-            {" )"}
+            {")"}
           </h2>
         ) : (
           <h2>FRANCE entière</h2>

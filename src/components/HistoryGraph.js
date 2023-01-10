@@ -13,6 +13,9 @@ import {
 // components
 import France from "./Carte/France";
 
+// functions
+import getNameOfDpt from "../assets/getNameOfDpt";
+
 // style
 import "../style/historyGraph.css";
 
@@ -57,6 +60,19 @@ const HistoryGraph = ({ searchName, gender }) => {
         />
       </div>
       <div className="results-container">
+        <h2>
+          {searchName.toUpperCase()} {gender && `  (${gender})`}
+        </h2>
+        {dptSelected ? (
+          <h3>
+            {getNameOfDpt(dptSelected.slice(4))}
+            {" ("}
+            {dptSelected.slice(4)}
+            {")"}
+          </h3>
+        ) : (
+          <h3>FRANCE entière</h3>
+        )}
         {isReady ? (
           <div className="graph-container">
             <ResponsiveContainer width="100%" height="80%">

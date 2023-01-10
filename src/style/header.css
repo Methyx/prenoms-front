@@ -1,0 +1,41 @@
+header {
+  border-bottom: 1px solid var(--orange);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header .title {
+  padding: 20px 0;
+  text-align: center;
+}
+header h1 {
+  font-size: 28px;
+  color: var(--bleu);
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+header a {
+  color: var(--bleu);
+  text-decoration: none;
+  font-style: italic;
+}
+
+header .menu {
+  margin-top: 15px;
+  display: flex;
+  gap: 25px;
+  margin-left: 20px;
+}
+header .menu .button a {
+  font-style: normal;
+  padding: 5px;
+}
+header .menu .button a:hover {
+  font-weight: bold;
+  color: var(--orange);
+}
+.page-location a {
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  border-radius: 4px;
+}
