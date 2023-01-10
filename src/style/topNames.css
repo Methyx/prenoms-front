@@ -78,8 +78,15 @@
 .top-names .search-name {
   margin-top: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  margin: 40px 10%;
 }
 .top-names .search-name .input-name {
-  width: 80%;
+  width: 100%;
+}
+.top-names .search-name p {
+  color: var(--orange);
+  font-size: 12px;
+  font-style: italic;
 }

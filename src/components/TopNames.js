@@ -143,6 +143,7 @@ const TopNames = ({ years, gender }) => {
               }
             }}
           />
+          {searchName && !memoElement.current && <p>non trouvé</p>}
         </div>
       </div>
     </div>

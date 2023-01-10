@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <div className="container home-page">
       <div className="title">
-        <h1>Le site des prénoms donnés en France entre 1900 et 2021</h1>
+        <h1>Les prénoms donnés en France entre 1900 et 2021</h1>
         <p>
           Source :{" "}
           <a
