@@ -46,6 +46,9 @@ const HistoryGraph = ({ searchName, gender }) => {
     };
     if (searchName) {
       loadData(searchName);
+    } else {
+      setData(null);
+      setIsReady(false);
     }
   }, [searchName, dptSelected, gender]);
 
@@ -60,18 +63,18 @@ const HistoryGraph = ({ searchName, gender }) => {
         />
       </div>
       <div className="results-container">
-        <h2>
+        <h1>
           {searchName.toUpperCase()} {gender && `  (${gender})`}
-        </h2>
+        </h1>
         {dptSelected ? (
-          <h3>
+          <h2>
             {getNameOfDpt(dptSelected.slice(4))}
             {" ("}
             {dptSelected.slice(4)}
             {")"}
-          </h3>
+          </h2>
         ) : (
-          <h3>FRANCE entière</h3>
+          <h2>FRANCE entière</h2>
         )}
         {isReady ? (
           <div className="graph-container">
@@ -105,8 +108,10 @@ const HistoryGraph = ({ searchName, gender }) => {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-        ) : (
+        ) : searchName ? (
           <p>Loading ...</p>
+        ) : (
+          <p>Entrez un prénom à rechercher</p>
         )}
       </div>
     </div>

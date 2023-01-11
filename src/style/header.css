@@ -1,30 +1,48 @@
 header {
-  border-bottom: 1px solid var(--orange);
+  height: 140px;
+  border-bottom: 3px solid var(--bleu);
+  border-radius: 10px;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 header .title {
-  padding: 20px 0;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-header h1 {
-  font-size: 28px;
-  color: var(--bleu);
+header .title img {
+  height: 80%;
+  margin: 0 20px;
+}
+
+header .title .center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+header .title h1 {
+  text-align: center;
+  font-size: 24px;
+  color: var(--orange);
+  font-weight: 600;
   margin-top: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+header .title p {
+  text-align: center;
 }
 header a {
   color: var(--bleu);
   text-decoration: none;
   font-style: italic;
 }
-
-header .menu {
-  margin-top: 15px;
+header .title .center .menu {
   display: flex;
   gap: 25px;
-  margin-left: 20px;
+  margin-bottom: 15px;
 }
 header .menu .button a {
   font-style: normal;
@@ -38,4 +56,33 @@ header .menu .button a:hover {
   color: var(--orange);
   border: 1px solid var(--orange);
   border-radius: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  header .title img {
+    height: 60%;
+  }
+  header .title h1 {
+    font-size: 18px;
+  }
+  header .title p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  header .title img {
+    width: 10%;
+    object-fit: contain;
+  }
+  header .title h1 {
+    font-size: 14px;
+  }
+  header .title p {
+    font-size: 12px;
+  }
+  header .title .center .menu {
+    font-size: 14px;
+    gap: 15px;
+  }
 }

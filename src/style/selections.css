@@ -1,0 +1,14 @@
+.selections {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+.selections p {
+  font-size: 12px;
+  color: var(--orange);
+  font-style: italic;
+}

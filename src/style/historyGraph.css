@@ -17,19 +17,40 @@
   height: 100%;
   width: max(calc(100% - 500px), 50%);
 }
-.history-graph .results-container h2 {
-  line-height: 30px;
+.history-graph .results-container h1 {
   text-align: center;
+  margin: 5px 0;
+  font-size: 25px;
   color: var(--bleu);
-  font-weight: bold;
+  border-bottom: none;
 }
-.history-graph .results-container h3 {
-  line-height: 20px;
+.history-graph .results-container h2 {
   text-align: center;
+  font-size: 22px;
+  font-weight: 600;
   color: var(--orange);
-  font-weight: bold;
+  margin: 5px 0;
 }
 .history-graph .graph-container {
   width: 100%;
   height: calc(100% - 50px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .history-graph {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    height: 1000px;
+  }
+  .history-graph .map-container {
+    height: 500px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .history-graph .results-container {
+    height: 500px;
+    width: 90%;
+    margin: 20px auto;
+  }
 }

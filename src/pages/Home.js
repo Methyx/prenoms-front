@@ -1,13 +1,9 @@
 import { useState } from "react";
 
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-
 // components
 import TopNames from "../components/TopNames";
+import HeadTitle from "../components/HeadTitle";
+import Selections from "../components/Selections";
 
 // style
 import "../style/home.css";
@@ -20,6 +16,7 @@ const Home = () => {
 
   // Functions
   const handleYearsInput = (yearEntry) => {
+    setYearsInput(yearEntry);
     if (yearEntry === "all") {
       setYears("");
     } else {
@@ -39,63 +36,23 @@ const Home = () => {
     }
   };
 
+  const checkInput = () => {
+    return years !== yearsInput || years === "all";
+  };
+
   // ==============
   return (
     <div className="container home-page">
-      <div className="head-title">
-        <h1>Le classement des Prénoms</h1>
-      </div>
-      <div className="selections">
-        <div>
-          <TextField
-            label="Année(s)"
-            type="text"
-            sx={{
-              "& label.Mui-focused": {
-                color: "#ff6e40",
-              },
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset": {
-                  borderColor: "#ff6e40",
-                },
-              },
-            }}
-            value={yearsInput}
-            onChange={(event) => {
-              setYearsInput(event.target.value);
-              handleYearsInput(event.target.value);
-            }}
-          />
-          {(years !== yearsInput || years === "all") && (
-            <p>ex.: 2015 ou 2010-2020</p>
-          )}
-        </div>
-        <FormControl>
-          <RadioGroup
-            row
-            value={gender}
-            onChange={(event) => {
-              setGender(event.target.value);
-            }}
-          >
-            <FormControlLabel
-              value="F"
-              control={<Radio sx={{ "&.Mui-checked": { color: "#ff6e40" } }} />}
-              label="Femme"
-            />
-            <FormControlLabel
-              value="M"
-              control={<Radio sx={{ "&.Mui-checked": { color: "#ff6e40" } }} />}
-              label="Homme"
-            />
-            <FormControlLabel
-              value=""
-              control={<Radio sx={{ "&.Mui-checked": { color: "#ff6e40" } }} />}
-              label="Indifférent"
-            />
-          </RadioGroup>
-        </FormControl>
-      </div>
+      <HeadTitle title="Le classement des prénoms" />
+      <Selections
+        labelInput={"Année(s)"}
+        valueInput={yearsInput}
+        handleValueInput={handleYearsInput}
+        checkInput={checkInput}
+        errorMessage={"ex.: 2015 ou 2010-2020"}
+        gender={gender}
+        setGender={setGender}
+      />
       <TopNames years={years} gender={gender} />
     </div>
   );
