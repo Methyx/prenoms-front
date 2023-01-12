@@ -31,9 +31,35 @@
   color: var(--orange);
   margin: 5px 0;
 }
+.history-graph .results-container h6 {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
 .history-graph .graph-container {
   width: 100%;
   height: calc(100% - 50px);
+}
+
+.history-graph .message-container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../assets/prenoms-melange.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.history-graph .message-container p {
+  text-align: center;
+  font-size: 25px;
+  background-color: var(--bleu);
+  color: var(--jaune);
+  padding: 15px;
+  border-radius: 10px;
 }
 
 /* RESPONSIVE */
@@ -52,5 +78,8 @@
     height: 500px;
     width: 90%;
     margin: 20px auto;
+  }
+  .history-graph .message-container p {
+    font-size: 18px;
   }
 }

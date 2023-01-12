@@ -45,12 +45,23 @@
   /* background-color: var(--bleu); */
   color: var(--bleu);
 }
+
+.top-names .loading {
+  background-image: url(../assets/bebe-loading.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .top-names .chart table {
   width: 100%;
 }
 .top-names .chart tr th {
   line-height: 40px;
   font-weight: bold;
+}
+.top-names .chart tbody tr:hover {
+  cursor: pointer;
 }
 .top-names .chart tr th:nth-child(2) {
   text-align: left;

@@ -8,11 +8,18 @@ import Selections from "../components/Selections";
 // style
 import "../style/home.css";
 
-const Home = () => {
+const Home = ({
+  setFirstname,
+  gender,
+  setGender,
+  years,
+  setYears,
+  dptSelected,
+  setDptSelected,
+}) => {
   // Use States
-  const [years, setYears] = useState("2020");
-  const [yearsInput, setYearsInput] = useState("2020");
-  const [gender, setGender] = useState("");
+
+  const [yearsInput, setYearsInput] = useState(years);
 
   // Functions
   const handleYearsInput = (yearEntry) => {
@@ -53,7 +60,13 @@ const Home = () => {
         gender={gender}
         setGender={setGender}
       />
-      <TopNames years={years} gender={gender} />
+      <TopNames
+        years={years}
+        gender={gender}
+        setFirstname={setFirstname}
+        dptSelected={dptSelected}
+        setDptSelected={setDptSelected}
+      />
     </div>
   );
 };

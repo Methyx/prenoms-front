@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 
 // functions
 import { debounce } from "lodash";
@@ -11,30 +11,28 @@ import Selections from "../components/Selections";
 // style
 import "../style/history.css";
 
-const History = () => {
+const History = ({
+  firstname,
+  setFirstname,
+  gender,
+  setGender,
+  dptSelected,
+  setDptSelected,
+}) => {
   // Use STATES
-  const [searchName, setSearchName] = useState("");
-  const [gender, setGender] = useState("");
-
-  const [debouncedName, setDebouncedName] = useState("");
+  const [searchName, setSearchName] = useState(firstname);
 
   // functions
-  const debounceName = useCallback(
-    debounce(() => {
-      setDebouncedName(searchName);
-    }, 800),
-    [searchName]
-  );
+  const debounceName = useRef(
+    debounce((text) => {
+      setFirstname(text);
+    }, 800)
+  ).current;
 
   const handleNameInput = (value) => {
     setSearchName(value);
+    debounceName(value);
   };
-
-  // Use EFFECT
-  useEffect(() => {
-    debounceName();
-    return debounceName.cancel;
-  }, [searchName, debounceName]);
 
   // ---------
   return (
@@ -52,7 +50,12 @@ const History = () => {
         setGender={setGender}
       />
 
-      <HistoryGraph searchName={debouncedName} gender={gender} />
+      <HistoryGraph
+        searchName={firstname}
+        gender={gender}
+        dptSelected={dptSelected}
+        setDptSelected={setDptSelected}
+      />
     </div>
   );
 };

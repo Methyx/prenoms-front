@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 
@@ -11,10 +12,18 @@ import getNameOfDpt from "../assets/getNameOfDpt";
 // style
 import "../style/topNames.css";
 
-const TopNames = ({ years, gender }) => {
+const TopNames = ({
+  years,
+  gender,
+  setFirstname,
+  dptSelected,
+  setDptSelected,
+}) => {
+  // Init
+  const navigate = useNavigate();
+
   // UseStates
   const [isReady, setIsReady] = useState(false);
-  const [dptSelected, setDptSelected] = useState(null);
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState("");
   const memoElement = useRef(null);
@@ -76,21 +85,28 @@ const TopNames = ({ years, gender }) => {
           <h2>FRANCE entière</h2>
         )}
         <h6>(Cliquer sur la carte pour sélectionner un département)</h6>
-        <div className="chart">
-          <table>
-            <thead>
-              <tr>
-                <th>Rang</th>
-                <th>Prénom</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isReady ? (
-                data[0]?._id ? (
+        <div className={isReady ? "chart" : "chart loading"}>
+          {isReady && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Rang</th>
+                  <th>Prénom</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data[0]?._id ? (
                   data.map((item, index) => {
                     return (
-                      <tr key={index + 1} id={item._id}>
+                      <tr
+                        key={index + 1}
+                        id={item._id}
+                        onClick={() => {
+                          setFirstname(item._id);
+                          navigate("/history");
+                        }}
+                      >
                         <td>{index + 1}</td>
                         <td>{item._id} </td>
                         <td>{Number(item.total).toLocaleString()} </td>
@@ -101,14 +117,10 @@ const TopNames = ({ years, gender }) => {
                   <tr>
                     <td colSpan={3}>Pas de données</td>
                   </tr>
-                )
-              ) : (
-                <tr>
-                  <td colSpan={3}>Loading ...</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          )}
         </div>
         <div className="search-name">
           <TextField

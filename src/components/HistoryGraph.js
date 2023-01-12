@@ -19,10 +19,10 @@ import getNameOfDpt from "../assets/getNameOfDpt";
 // style
 import "../style/historyGraph.css";
 
-const HistoryGraph = ({ searchName, gender }) => {
+const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
   // UseStates
   const [isReady, setIsReady] = useState(false);
-  const [dptSelected, setDptSelected] = useState(null);
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -76,6 +76,7 @@ const HistoryGraph = ({ searchName, gender }) => {
         ) : (
           <h2>FRANCE entière</h2>
         )}
+        <h6>(Cliquer sur la carte pour sélectionner un département)</h6>
         {isReady ? (
           <div className="graph-container">
             <ResponsiveContainer width="100%" height="80%">
@@ -108,10 +109,14 @@ const HistoryGraph = ({ searchName, gender }) => {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-        ) : searchName ? (
-          <p>Loading ...</p>
         ) : (
-          <p>Entrez un prénom à rechercher</p>
+          <div className="message-container">
+            {searchName ? (
+              <p>Loading ...</p>
+            ) : (
+              <p>Entrez un prénom à rechercher</p>
+            )}
+          </div>
         )}
       </div>
     </div>
