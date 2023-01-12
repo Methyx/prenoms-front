@@ -32,7 +32,8 @@ const TopNames = ({
     const loadData = async () => {
       setIsReady(false);
       try {
-        let url = "http://localhost:4000/top";
+        // let url = "http://localhost:4000/top";
+        let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/top";
         url += "?start=1";
         // url += "&number=10";
         if (years) {
@@ -107,7 +108,7 @@ const TopNames = ({
                           navigate("/history");
                         }}
                       >
-                        <td>{index + 1}</td>
+                        <td>{Number(index + 1).toLocaleString()}</td>
                         <td>{item._id} </td>
                         <td>{Number(item.total).toLocaleString()} </td>
                       </tr>
@@ -121,6 +122,24 @@ const TopNames = ({
               </tbody>
             </table>
           )}
+        </div>
+        <div className="array-navigation">
+          <p
+            onClick={() => {
+              const elem = document.getElementById(data[0]._id);
+              elem.scrollIntoView({ block: "nearest" });
+            }}
+          >
+            ⏫ début
+          </p>
+          <p
+            onClick={() => {
+              const elem = document.getElementById(data[data.length - 1]._id);
+              elem.scrollIntoView({ block: "nearest" });
+            }}
+          >
+            fin ⏬
+          </p>
         </div>
         <div className="search-name">
           <TextField
@@ -144,7 +163,9 @@ const TopNames = ({
                 event.target.value.toUpperCase()
               );
               if (elem) {
-                elem.scrollIntoView();
+                elem.scrollIntoView({
+                  block: "nearest",
+                });
                 memoElement.current = {
                   element: elem,
                   color: window.getComputedStyle(elem).color,
@@ -162,6 +183,7 @@ const TopNames = ({
           {searchName && !memoElement.current && <p>non trouvé</p>}
         </div>
       </div>
+      <br />
     </div>
   );
 };

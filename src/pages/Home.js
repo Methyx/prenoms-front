@@ -44,7 +44,7 @@ const Home = ({
   };
 
   const checkInput = () => {
-    return years !== yearsInput || years === "all";
+    return yearsInput === "all" || years === yearsInput;
   };
 
   // ==============
@@ -52,11 +52,11 @@ const Home = ({
     <div className="container home-page">
       <HeadTitle title="Le classement des prénoms" />
       <Selections
-        labelInput={"Année(s)"}
+        labelInput={"années 1900-2021"}
         valueInput={yearsInput}
         handleValueInput={handleYearsInput}
         checkInput={checkInput}
-        errorMessage={"ex.: 2015 ou 2010-2020"}
+        errorMessage={"ex.: 2015 ou 2010-2020 ou all"}
         gender={gender}
         setGender={setGender}
       />

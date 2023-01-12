@@ -1,5 +1,5 @@
 .top-names {
-  margin: 15px 0;
+  padding-bottom: 30px;
   display: flex;
   width: 100%;
   height: 500px;
@@ -70,7 +70,7 @@
   line-height: 21px;
 }
 .top-names .chart tr td:nth-child(1) {
-  width: 15%;
+  width: 20%;
   text-align: center;
 }
 .top-names .chart tr td:nth-child(2) {
@@ -86,11 +86,24 @@
   color: var(--beige);
 }
 
+.top-names .array-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+.top-names .array-navigation p {
+  font-size: 14px;
+}
+.top-names .array-navigation p:hover {
+  font-weight: bold;
+  color: var(--orange);
+  cursor: pointer;
+}
+
 .top-names .search-name {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 40px 10%;
+  margin: 20px 10%;
 }
 .top-names .search-name .input-name {
   width: 100%;

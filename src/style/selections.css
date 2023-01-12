@@ -12,3 +12,10 @@
   color: var(--orange);
   font-style: italic;
 }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .selections span {
+    font-size: 14px;
+  }
+}

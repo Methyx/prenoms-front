@@ -29,7 +29,8 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
     const loadData = async (name) => {
       setIsReady(false);
       try {
-        let url = "http://localhost:4000/history";
+        // let url = "http://localhost:4000/history";
+        let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/history";
         url += "?name=" + name;
         if (gender) {
           url += "&gender=" + gender;

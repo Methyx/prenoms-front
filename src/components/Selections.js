@@ -37,7 +37,7 @@ const Selections = ({
             handleValueInput(event.target.value);
           }}
         />
-        {checkInput() ? (
+        {!checkInput() ? (
           <p>{errorMessage}</p>
         ) : (
           <p>
