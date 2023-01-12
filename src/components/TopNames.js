@@ -48,6 +48,7 @@ const TopNames = ({
         const response = await axios.get(url);
         setData(response.data);
         setIsReady(true);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.log(error.message);
       }

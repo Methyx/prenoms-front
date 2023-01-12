@@ -41,6 +41,7 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
         const response = await axios.get(url);
         setData(response.data);
         setIsReady(true);
+        window.scrollTo(0, 0);
       } catch (error) {
         console.log(error.message);
       }
@@ -97,7 +98,17 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="_id" interval={9} tickMargin={10} />
+                <XAxis
+                  dataKey="_id"
+                  interval={
+                    window.innerWidth >= 1150
+                      ? 9
+                      : window.innerWidth >= 900
+                      ? 19
+                      : window.innerWidth >= 450 && 29
+                  }
+                  tickMargin={10}
+                />
                 <YAxis />
                 <Tooltip />
                 <Area
