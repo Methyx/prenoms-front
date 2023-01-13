@@ -31,6 +31,7 @@ const TopNames = ({
   useEffect(() => {
     const loadData = async () => {
       setIsReady(false);
+      // window.scrollTo({ top: 100, behavior: "smooth" });
       try {
         // let url = "http://localhost:4000/top";
         let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/top";
@@ -48,7 +49,6 @@ const TopNames = ({
         const response = await axios.get(url);
         setData(response.data);
         setIsReady(true);
-        window.scrollTo(0, 0);
       } catch (error) {
         console.log(error.message);
       }
@@ -59,7 +59,7 @@ const TopNames = ({
   }, [dptSelected, gender, years]);
 
   return (
-    <div className="top-names">
+    <div className={isReady ? "top-names" : "top-names loading"}>
       <div className="map-container">
         <France
           highlightColor={"#ff6e40"}

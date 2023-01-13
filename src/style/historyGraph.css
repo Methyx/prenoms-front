@@ -4,6 +4,9 @@
   width: 100%;
   height: 500px;
 }
+.loading {
+  cursor: progress;
+}
 
 .history-graph .map-container {
   width: min(500px, 50%);
@@ -67,16 +70,16 @@
   .history-graph {
     flex-direction: column-reverse;
     align-items: flex-start;
-    height: 1000px;
+    height: 900px;
   }
   .history-graph .map-container {
-    height: 500px;
+    height: 45%;
     width: 90%;
     margin: 0 auto;
   }
   .history-graph .results-container {
-    height: 500px;
-    width: 90%;
+    height: 55%;
+    width: 100%;
     margin: 20px auto;
   }
   .history-graph .message-container p {

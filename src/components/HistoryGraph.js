@@ -28,6 +28,7 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
   useEffect(() => {
     const loadData = async (name) => {
       setIsReady(false);
+      // window.scrollTo({ top: 100, behavior: "smooth" });
       try {
         // let url = "http://localhost:4000/history";
         let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/history";
@@ -41,7 +42,6 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
         const response = await axios.get(url);
         setData(response.data);
         setIsReady(true);
-        window.scrollTo(0, 0);
       } catch (error) {
         console.log(error.message);
       }
@@ -56,7 +56,7 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
 
   // --------
   return (
-    <div className="history-graph">
+    <div className={isReady ? "history-graph" : "history-graph loading"}>
       <div className="map-container">
         <France
           highlightColor={"#ff6e40"}
@@ -100,14 +100,20 @@ const HistoryGraph = ({ searchName, gender, dptSelected, setDptSelected }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="_id"
-                  interval={
+                  ticks={
                     window.innerWidth >= 1150
-                      ? 9
+                      ? [
+                          1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980,
+                          1990, 2000, 2010, 2020,
+                        ]
                       : window.innerWidth >= 900
-                      ? 19
-                      : window.innerWidth >= 450 && 29
+                      ? [1900, 1920, 1940, 1960, 1980, 2000, 2020]
+                      : [1900, 1940, 1980, 2020]
                   }
+                  // minTickGap={19}
+                  interval="preserveStart"
                   tickMargin={10}
+                  // angle={-45}
                 />
                 <YAxis />
                 <Tooltip />

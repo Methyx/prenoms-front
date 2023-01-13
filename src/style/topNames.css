@@ -119,15 +119,15 @@
   .top-names {
     flex-direction: column-reverse;
     align-items: flex-start;
-    height: 1000px;
+    height: 900px;
   }
   .top-names .map-container {
-    height: 500px;
+    height: 45%;
     width: 90%;
     margin: 0 auto;
   }
   .top-names .results-container {
-    height: 500px;
+    height: 55%;
     width: 90%;
     margin: 20px auto;
   }
