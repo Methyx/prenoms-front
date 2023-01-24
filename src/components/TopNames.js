@@ -56,8 +56,8 @@ const TopNames = ({
       setColorMap({ min: 0, max: 0, array: [] });
       setLoadingMap(true);
       try {
-        let url = "http://localhost:4000/name";
-        // let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/name";
+        // let url = "http://localhost:4000/name";
+        let url = "https://site--prenoms-back--gw6mlgwnmzwz.code.run/name";
         url += "?name=" + mapName;
         if (years) {
           url += "&years=" + years;
