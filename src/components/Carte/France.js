@@ -27,7 +27,12 @@ const France = ({
       tabColor[normalizeDpt(listOfDepartements[i].num_dep)] = defaultColor;
     }
     for (let i = 0; i < departements.length; i++) {
-      tabColor[normalizeDpt(departements[i].code)] = departements[i].color;
+      if (departements[i].code === 20) {
+        tabColor["2A"] = departements[i].color;
+        tabColor["2B"] = departements[i].color;
+      } else {
+        tabColor[normalizeDpt(departements[i].code)] = departements[i].color;
+      }
     }
     if (dptSelected) {
       if (dptSelected === "dpt-20") {
