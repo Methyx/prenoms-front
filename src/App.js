@@ -25,6 +25,7 @@ function App() {
           path="/"
           element={
             <Home
+              firstname={firstname}
               setFirstname={setFirstname}
               gender={gender}
               setGender={setGender}

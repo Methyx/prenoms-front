@@ -16,6 +16,7 @@ import "../style/topNames.css";
 const TopNames = ({
   years,
   gender,
+  firstname,
   setFirstname,
   dptSelected,
   setDptSelected,
@@ -23,7 +24,7 @@ const TopNames = ({
   // UseStates
   const [isReady, setIsReady] = useState(false);
   const [data, setData] = useState([]);
-  const [searchName, setSearchName] = useState("");
+  // const [searchName, setSearchName] = useState("");
   const memoElement = useRef(null);
   const [colorMap, setColorMap] = useState({ min: 0, max: 0, array: [] });
   const [mapName, setMapName] = useState("");
@@ -31,7 +32,7 @@ const TopNames = ({
 
   // functions
   useEffect(() => {
-    const elem = document.getElementById(searchName.toUpperCase());
+    const elem = document.getElementById(firstname.toUpperCase());
     if (elem) {
       elem.scrollIntoView({
         block: "nearest",
@@ -48,7 +49,7 @@ const TopNames = ({
         memoElement.current = null;
       }
     }
-  }, [searchName, isReady]);
+  }, [firstname, isReady]);
 
   useEffect(() => {
     const getMapColors = async () => {
@@ -113,8 +114,8 @@ const TopNames = ({
         const response = await axios.get(url);
         setData(response.data);
         setIsReady(true);
-        // if (!searchName) {
-        //   setSearchName(response.data[0]._id || "");
+        // if (!firstname) {
+        //   setfirstname(response.data[0]._id || "");
         // }
       } catch (error) {
         console.log(error.message);
@@ -209,7 +210,7 @@ const TopNames = ({
                         key={index + 1}
                         id={item._id}
                         onClick={() => {
-                          setSearchName(item._id);
+                          setFirstname(item._id);
                           setMapName(item._id);
                           // setFirstname(item._id);
                           // navigate("/history");
@@ -270,12 +271,12 @@ const TopNames = ({
             }}
             type="text"
             label="Rechercher un prénom"
-            value={searchName}
+            value={firstname}
             onChange={(event) => {
-              setSearchName(event.target.value);
+              setFirstname(event.target.value);
             }}
           />
-          {searchName.toUpperCase() !== mapName.toUpperCase() && (
+          {firstname.toUpperCase() !== mapName.toUpperCase() && (
             <p>non trouvé</p>
           )}
         </div>

@@ -9,6 +9,7 @@ import Selections from "../components/Selections";
 import "../style/home.css";
 
 const Home = ({
+  firstname,
   setFirstname,
   gender,
   setGender,
@@ -63,6 +64,7 @@ const Home = ({
       <TopNames
         years={years}
         gender={gender}
+        firstname={firstname}
         setFirstname={setFirstname}
         dptSelected={dptSelected}
         setDptSelected={setDptSelected}
